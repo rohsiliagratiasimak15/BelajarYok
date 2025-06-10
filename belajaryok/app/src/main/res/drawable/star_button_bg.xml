@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+<!--    bayangan-->
+  <item>
+      <shape android:shape="oval">
+          <solid android:color="#336600"/>
+      </shape>
+  </item>
+
+
+<!--    tombol utama-->
+      <item android:top="4dp" android:left="4dp">
+          <shape android:shape="oval">
+              <gradient android:startColor="#72e800"
+                  android:endColor="#45a000"
+                  android:angle="270"/>
+          </shape>
+      </item>
+</layer-list>

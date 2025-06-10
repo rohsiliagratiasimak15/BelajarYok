@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:id="@+id/img_bg_game"
+        android:src="@drawable/ic_launcher_background"/>
+
+    <androidx.appcompat.widget.Toolbar
+        android:background="@color/white"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="40sp"
+                android:layout_height="40sp"
+                android:src="@drawable/ic_launcher_background"
+                android:id="@+id/imagetoolbar"/>
+            <TextView
+                android:layout_weight="1"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_marginLeft="20sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/app_name"/>
+            <LinearLayout
+                android:gravity="center"
+                android:layout_weight="0"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/imgDarkLight"
+                    android:layout_marginRight="15dp"
+                    android:layout_width="30sp"
+                    android:layout_height="30sp"
+                    android:src="@drawable/ic_dark"/>
+
+                <ImageView
+                    android:layout_width="30sp"
+                    android:layout_height="30sp"
+                    android:src="@drawable/ic_coin"/>
+
+                <TextView
+                    android:id="@+id/text_coint"
+                    android:layout_marginLeft="10sp"
+                    android:layout_marginRight="10sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="20"
+                    android:textSize="16sp"/>
+
+
+                <ImageView
+                    android:layout_width="30sp"
+                    android:layout_height="30sp"
+                    android:src="@drawable/heart"/>
+
+                <TextView
+                    android:id="@+id/text_heart"
+                    android:layout_marginLeft="10sp"
+                    android:layout_marginRight="10sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="5"
+                    android:textStyle="bold"
+                    android:textSize="16sp"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+
+
+    <ScrollView
+        android:layout_below="@id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView">
+        <RelativeLayout
+            android:paddingBottom="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <RelativeLayout
+                android:id="@+id/tombol1"
+                android:layout_marginTop="30sp"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageButton
+                    android:id="@+id/imgBtn1"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:background="@drawable/tombol_selector"
+                    android:scaleType="centerInside"
+                    android:contentDescription="Tombol dengan icon"
+                    android:padding="12dp"
+                    app:tint="#FFFFFF" />
+                <ImageView
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="7dp"
+                    android:layout_width="40sp"
+                    android:layout_height="40sp"
+                    android:src="@drawable/baseline_star_24"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_below="@id/tombol1"
+                android:id="@+id/tombol2"
+                android:layout_marginTop="30sp"
+                android:layout_marginLeft="130sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageButton
+                    android:id="@+id/imgBtn2"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:background="@drawable/tombol_selector_grey"
+                    android:scaleType="centerInside"
+                    android:contentDescription="Tombol dengan icon"
+                    android:padding="12dp"
+                    app:tint="#FFFFFF" />
+                <ImageView
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="7dp"
+                    android:layout_width="40sp"
+                    android:layout_height="40sp"
+                    android:src="@drawable/baseline_star_24"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_below="@id/tombol2"
+                android:id="@+id/tombol3"
+                android:layout_marginTop="30sp"
+                android:layout_marginLeft="110sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageButton
+                    android:id="@+id/imgBtn3"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:background="@drawable/tombol_selector_grey"
+                    android:scaleType="centerInside"
+                    android:contentDescription="Tombol dengan icon"
+                    android:padding="12dp"
+                    app:tint="#FFFFFF" />
+                <ImageView
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="7dp"
+                    android:layout_width="40sp"
+                    android:layout_height="40sp"
+                    android:src="@drawable/baseline_star_24"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_below="@id/tombol3"
+                android:id="@+id/tombol4"
+                android:layout_marginTop="30sp"
+                android:layout_marginLeft="150sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageButton
+                    android:id="@+id/imgBtn4"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:background="@drawable/tombol_selector_grey"
+                    android:scaleType="centerInside"
+                    android:contentDescription="Tombol dengan icon"
+                    android:padding="12dp"
+                    app:tint="#FFFFFF" />
+                <ImageView
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="7dp"
+                    android:layout_width="40sp"
+                    android:layout_height="40sp"
+                    android:src="@drawable/baseline_star_24"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_below="@id/tombol4"
+                android:id="@+id/tombol5"
+                android:layout_marginTop="30sp"
+                android:layout_marginLeft="190sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageButton
+                    android:id="@+id/imgBtn5"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:background="@drawable/tombol_selector_grey"
+                    android:scaleType="centerInside"
+                    android:contentDescription="Tombol dengan icon"
+                    android:padding="12dp"
+                    app:tint="#FFFFFF" />
+                <ImageView
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="7dp"
+                    android:layout_width="40sp"
+                    android:layout_height="40sp"
+                    android:src="@drawable/baseline_star_24"/>
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_marginTop="40dp"
+                android:id="@+id/image_1"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_below="@+id/tombol5"
+                android:layout_marginLeft="50sp"
+                android:src="@drawable/hi" />
+
+            <RelativeLayout
+                android:layout_below="@id/tombol5"
+                android:id="@+id/tombol6"
+                android:layout_marginTop="30sp"
+                android:layout_marginLeft="230sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageButton
+                    android:id="@+id/imgBtn6"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:background="@drawable/tombol_selector_grey"
+                    android:scaleType="centerInside"
+                    android:contentDescription="Tombol dengan icon"
+                    android:padding="12dp"
+                    app:tint="#FFFFFF" />
+                <ImageView
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="7dp"
+                    android:layout_width="40sp"
+                    android:layout_height="40sp"
+                    android:src="@drawable/baseline_star_24"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_below="@id/tombol6"
+                android:id="@+id/tombol7"
+                android:layout_marginTop="30sp"
+                android:layout_marginLeft="260sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageButton
+                    android:id="@+id/imgBtn7"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:background="@drawable/tombol_selector_grey"
+                    android:scaleType="centerInside"
+                    android:contentDescription="Tombol dengan icon"
+                    android:padding="12dp"
+                    app:tint="#FFFFFF" />
+                <ImageView
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="7dp"
+                    android:layout_width="40sp"
+                    android:layout_height="40sp"
+                    android:src="@drawable/baseline_star_24"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_below="@id/tombol7"
+                android:id="@+id/tombol8"
+                android:layout_marginTop="30sp"
+                android:layout_marginLeft="230sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageButton
+                    android:id="@+id/imgBtn8"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:background="@drawable/tombol_selector_grey"
+                    android:scaleType="centerInside"
+                    android:contentDescription="Tombol dengan icon"
+                    android:padding="12dp"
+                    app:tint="#FFFFFF" />
+                <ImageView
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="7dp"
+                    android:layout_width="40sp"
+                    android:layout_height="40sp"
+                    android:src="@drawable/baseline_star_24"/>
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_below="@id/tombol8"
+                android:id="@+id/tombol9"
+                android:layout_marginTop="30sp"
+                android:layout_marginLeft="200sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageButton
+                    android:id="@+id/imgBtn9"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:background="@drawable/tombol_selector_grey"
+                    android:scaleType="centerInside"
+                    android:contentDescription="Tombol dengan icon"
+                    android:padding="12dp"
+                    app:tint="#FFFFFF" />
+                <ImageView
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="7dp"
+                    android:layout_width="40sp"
+                    android:layout_height="40sp"
+                    android:src="@drawable/baseline_star_24"/>
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+
+
+</RelativeLayout>

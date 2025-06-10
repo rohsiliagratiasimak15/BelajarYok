@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Layer bayangan di bawah tombol -->
+    <item>
+        <shape android:shape="oval">
+            <size
+                android:width="64dp"
+                android:height="64dp" />
+            <solid android:color="#84000000" /> <!-- bayangan hitam transparan -->
+        </shape>
+    </item>
+
+    <!-- Layer tombol utama -->
+    <item android:bottom="5dp"> <!-- geser agar bayangan terlihat di bawah -->
+        <shape android:shape="oval">
+            <size
+                android:width="60dp"
+                android:height="60dp" />
+            <gradient
+                android:startColor="#B4B4B4"
+                android:endColor="#5B5B5B"
+                android:angle="270" />
+        </shape>
+    </item>
+
+</layer-list>
