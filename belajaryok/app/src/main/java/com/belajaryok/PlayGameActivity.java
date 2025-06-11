@@ -43,7 +43,6 @@ public class PlayGameActivity extends AppCompatActivity {
     private String currentJawaban = "";
     private int progressValue = 0;
     private int jumlahHati = 5;
-    private ImageView imgReload;
     private SharedPreferences shared;
     private SqlHelper sqlHelper;
     private int level = 0;
@@ -81,12 +80,34 @@ public class PlayGameActivity extends AppCompatActivity {
         btn_jawaban_6 = findViewById(R.id.appButtonJawab6);
         btn_periksa_jawaban = findViewById(R.id.btnPeriksaJawaban);
 
-        imgReload = findViewById(R.id.imgReload);
-        imgReload.setOnClickListener(v->{
-            ambilData();
-            Toast.makeText(this, "Reload Game", Toast.LENGTH_SHORT).show();
+        btn_periksa_jawaban.setOnClickListener(v -> {
+            String jawabanUser = text_jawaban.getText().toString().trim();
+            if(jumlahHati < 0) {
+                Toast.makeText(PlayGameActivity.this, "Yah, kamu game over", Toast.LENGTH_SHORT).show();
+            }else{
+                if (jawabanUser.equalsIgnoreCase(currentJawaban.trim())) {
+                    ambilData(); // Ini sudah memanggil resetJawabanButtons()
+                    Toast.makeText(getApplicationContext(), "Jawaban benar!", Toast.LENGTH_SHORT).show();
+                    progressValue += 20;
+                    sqlHelper.updatePoint(shared.getString("username", ""), daftarGame.get(0).getPoint());
+                } else {
+                    ambilData(); // Ini sudah memanggil resetJawabanButtons()
+                    Toast.makeText(getApplicationContext(), "Jawaban salah! Benar: " + currentJawaban, Toast.LENGTH_LONG).show();
+                    jumlahHati--;
+                    sqlHelper.setTableHeart(shared.getString("username", ""), jumlahHati);
+                }
+                text_hati.setText(String.valueOf(jumlahHati));
+                progressBar.setProgress(progressValue);
+            }
+            if(progressValue == 100) {
+                level += 1;
+                sqlHelper.setTableLevel(shared.getString("username", ""), level);
+                Toast.makeText(PlayGameActivity.this, "Next Level", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), ViewFragment.class);
+                startActivity(intent);
+                finish();
+            }
         });
-        ambilData();
 
 
 
@@ -95,6 +116,10 @@ public class PlayGameActivity extends AppCompatActivity {
             String kata = btn.getText().toString();
             String currentText = text_jawaban.getText().toString();
             text_jawaban.setText(currentText.isEmpty() ? kata : currentText + " " + kata);
+
+            // Nonaktifkan tombol setelah diklik
+            btn.setEnabled(false);
+            btn.setAlpha(0.5f); // Membuat tombol terlihat lebih redup
         };
 
         btn_jawaban_1.setOnClickListener(jawabanListener);
@@ -159,9 +184,13 @@ public class PlayGameActivity extends AppCompatActivity {
                 }
             }
         });
+
+        ambilData();
     }
 
     private void ambilData() {
+        resetJawabanButtons(); // Tambahkan di sini
+
         GameService apiService = RetrofitClient.getClient().create(GameService.class);
         Call<GameResponse> call = apiService.getGames();
         call.enqueue(new Callback<GameResponse>() {
@@ -173,36 +202,6 @@ public class PlayGameActivity extends AppCompatActivity {
                         daftarGame.clear();
                         daftarGame.addAll(gameResponse.listGames);
                         tampilkanSoalAcak();
-
-                        btn_periksa_jawaban.setOnClickListener(v -> {
-                            String jawabanUser = text_jawaban.getText().toString().trim();
-                            if(jumlahHati < 0) {
-                                Toast.makeText(PlayGameActivity.this, "Yah, kamu game over", Toast.LENGTH_SHORT).show();
-                            }else{
-                                if (jawabanUser.equalsIgnoreCase(currentJawaban.trim())) {
-                                    ambilData();
-                                    Toast.makeText(getApplicationContext(), "Jawaban benar!", Toast.LENGTH_SHORT).show();
-                                    progressValue += 20;
-                                    sqlHelper.updatePoint(shared.getString("username", ""), gameResponse.getListGames().get(0).getPoint());
-
-                                } else {
-                                    ambilData();
-                                    Toast.makeText(getApplicationContext(), "Jawaban salah! Benar: " + currentJawaban, Toast.LENGTH_LONG).show();
-                                    jumlahHati--;
-                                    sqlHelper.setTableHeart(shared.getString("username", ""), jumlahHati);
-                                }
-                                text_hati.setText(String.valueOf(jumlahHati));
-                                progressBar.setProgress(progressValue);
-                            }
-                            if(progressValue == 100) {
-                                level += 1;
-                                sqlHelper.setTableLevel(sqlHelper.getTableLevel(shared.getString("username","").toString()), level);
-                                Toast.makeText(PlayGameActivity.this, "Next Level", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(getApplicationContext(), ViewFragment.class);
-                                startActivity(intent);
-                                finish();
-                            }
-                        });
                     } else {
                         Toast.makeText(PlayGameActivity.this, "Tidak ada game", Toast.LENGTH_SHORT).show();
                     }
@@ -267,14 +266,30 @@ public class PlayGameActivity extends AppCompatActivity {
     }
 
 
-
-
-
     private String ambilKataRandom() {
         if (daftarGame == null || daftarGame.isEmpty()) return "kata";
         Game game = daftarGame.get(new Random().nextInt(daftarGame.size()));
         String jawabanAcak = game.jawaban.get(new Random().nextInt(game.jawaban.size()));
         String[] kata = jawabanAcak.split(" ");
         return kata[new Random().nextInt(kata.length)];
+    }
+
+    private void resetJawabanButtons() {
+        btn_jawaban_1.setEnabled(true);
+        btn_jawaban_2.setEnabled(true);
+        btn_jawaban_3.setEnabled(true);
+        btn_jawaban_4.setEnabled(true);
+        btn_jawaban_5.setEnabled(true);
+        btn_jawaban_6.setEnabled(true);
+
+        btn_jawaban_1.setAlpha(1.0f);
+        btn_jawaban_2.setAlpha(1.0f);
+        btn_jawaban_3.setAlpha(1.0f);
+        btn_jawaban_4.setAlpha(1.0f);
+        btn_jawaban_5.setAlpha(1.0f);
+        btn_jawaban_6.setAlpha(1.0f);
+
+        // Reset text jawaban juga
+        text_jawaban.setText("");
     }
 }

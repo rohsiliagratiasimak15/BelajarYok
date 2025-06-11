@@ -203,13 +203,6 @@
             android:text="PERIKSA"
             android:id="@+id/btnPeriksaJawaban"
             android:backgroundTint="@color/green"/>
-        
-        <ImageView
-            android:id="@+id/imgReload"
-            android:layout_marginLeft="10dp"
-            android:layout_width="40sp"
-            android:layout_height="40sp"
-            android:src="@drawable/reload"/>
 
     </LinearLayout>
 
